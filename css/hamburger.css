@@ -24,8 +24,6 @@
   cursor: pointer;
 }
 
-/* ONE */
-
 #hamburger-1.is-active .line:nth-child(2){
   opacity: 0;
 }

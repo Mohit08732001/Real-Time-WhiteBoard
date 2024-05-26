@@ -1,4 +1,4 @@
-// to create createBox for image ,sticky
+// Create Box For Sticky
 function createBox(){
   const stickyPad = document.createElement("div");
   const navBar = document.createElement("div");
@@ -15,7 +15,8 @@ function createBox(){
   stickyPad.appendChild(navBar);
   stickyPad.appendChild(writingPad);
   body.appendChild(stickyPad);
-  // create sticky
+  
+  // Create sticky
   close.addEventListener("click", function() {
     stickyPad.remove();
   });
@@ -31,7 +32,7 @@ function createBox(){
   let initialY = null;
   let isStickyDown = false;
 
-  // added move sticky logic
+  // Logic for sticky move
   navBar.addEventListener("mousedown", function(e) {
     initialX = e.clientX;
     initialY = e.clientY;
@@ -55,10 +56,12 @@ function createBox(){
       initialY = finalY;
     }
   });
+
   // sticky => mouseup
   navBar.addEventListener("mouseup", function() {
     isStickyDown = false;
   });
+
   // pointer => moved off sticky
   navBar.addEventListener("mouseleave", function() {
     isStickyDown = false;
@@ -81,9 +84,6 @@ function handleHamburger() {
 
   isActive = !isActive;
 }
-
-
-
 
 
 // utility fn to handle tool change
@@ -111,27 +111,21 @@ function handleToolChange(tool) {
     }
   } else if (tool == "eraser") {
     if (Activetool == "eraser") {
-      // show options
       eraserOptions.classList.add("show");
     } else {
       Activetool = "eraser";
-      // console.log(tool[1].classList);
       tools[0].classList.remove("active");
       tools[1].classList.add("active");
       pencilOptions.classList.remove("show");
       ctx.globalCompositeOperation = "destination-out";
       ctx.lineWidth = inputs[0].value;
-
-      // remove other options
-      // set yourself active
-      // change style
     }
   } else if (tool == "sticky") {
     createSticky();
   }
 }
 
-//***********Undo stack****** */
+//***********Undo stack*******//
 let undoStack = [];
 let redoStack = [];
 function undoMaker() {
@@ -143,7 +137,7 @@ function undoMaker() {
   return false;
 }
 
-// **********************redo Stack
+//***********Redo stack*******//
 function redoMaker() {
   if (redoStack.length > 0) {
     undoStack.push(redoStack.pop());

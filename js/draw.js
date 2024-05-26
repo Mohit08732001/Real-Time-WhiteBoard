@@ -19,7 +19,6 @@ board.addEventListener("mousedown", function(e) {
 
 board.addEventListener("mousemove", function(e) {
   if (isMouseDown == true) {
-    // console.log(ctx);
     let top = getLocation();
 
     ctx.lineTo(e.clientX, e.clientY - top);

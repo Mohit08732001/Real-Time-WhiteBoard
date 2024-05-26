@@ -1,4 +1,4 @@
-/******************************upload Image************************************/
+/******************************Upload Image************************************/
 
 const uploadImg = document.querySelector(".upload-img");
 const FileInput = document.querySelector(".input-img");
@@ -18,7 +18,9 @@ uploadImg.addEventListener("click", function(e) {
     };
   });
 });
-/***********************************download Image*******************************/
+
+
+/***********************************Download Image*******************************/
 
 const downloadTool = document.querySelector(".download-tool");
 downloadTool.addEventListener("click", function(e) {
