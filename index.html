@@ -1,42 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <title>WhiteBoard</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/sticky.css">
+    <link rel="stylesheet" href="./css/image.css">
+    <link rel="stylesheet" href="./css/hamburger.css">
+    <link rel="stylesheet" href="./css/queries.css">
 </head>
+
 <body>
-    <div class="toolbar">
-        <div class="cross">Cross</div>
-        <div class="toolbar-options">
-            <div class="tool" id="pencil">
-                <img src="./icons/blackPencil.svg", alt="" class="tool-img">
+    <!-- canvas Tag -->
+    <div class="combined">
+        <div class="toolBar">
+            <div class=" hamburger is-active" id="hamburger-1">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
             </div>
-            <div class="tool" id="eraser">
-                <img src="./icons/eraser.svg", alt="" class="tool-img">
-            </div>
-            <div class="tool" id="sticky">
-                <img src="./icons/stickyNote.svg", alt="" class="tool-img">
-            </div>
-            <div class="tool" id="upload">
-                <img src="./icons/photo.svg", alt="" class="tool-img">
-            </div>
-            <div class="tool" id="download">
-                <img src="./icons/downloads.svg", alt="" class="tool-img">
-            </div>
-            <div class="tool" id="undo">
-                <img src="./icons/undo.svg" alt="" class="tool-img">
-            </div>
-            <div class="tool" id="redo">
-                <img src="./icons/redo.svg", alt="" class="tool-img">
+            <div class="tool-panel add-animation">
+                <div class="tool active">
+                    <img src="icons/blackPencil.svg" class="tool-img " id="pencil-img" alt=""
+                        onclick="handleLocaltoolChange('pencil')">
+                    <div class="tool-options pencil">
+                        <div class="pencil-size">
+                            <input type="range" id="pen-size" min="5" max="30" value="5"
+                                onchange="sizeChange(this.value)">
+                        </div>
+                        <div class="pencil-color">
+                            <div class="colors red" onclick="handleColorChange('red')"></div>
+                            <div class="colors green" onclick="handleColorChange('#55efc4')"></div>
+                            <div class="colors blue" onclick="handleColorChange('blue')"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tool eraser">
+                    <img src="icons/eraser.svg" alt="" class="tool-img" id="eraser-img"
+                        onclick="handleLocaltoolChange('eraser')">
+                    <div class="tool-options eraser">
+                        <div class="eraser-size">
+                            <input type="range" id="eraser-size" min="5" max=30 onchange="sizeChange(this.value)">
+                        </div>
+                    </div>
+                </div>
+                <div class="tool">
+                    <img src="icons/stickyNote.svg" alt="" onclick="handleLocaltoolChange('sticky')" class="tool-img">
+                </div>
+                <div class="tool">
+                    <input type="file" name="" id="" class="input-img" accept="image/*">
+                    <img src="icons/photo.svg" alt="" class="upload-img tool-img"
+                        onclick="handleToolChange('upload')">
+                </div>
+                <div class="tool">
+                    <img src="icons/downloads.svg" alt="" class="tool-img download-tool">
+                </div>
+                <div class="tool">
+                    <img src="icons/undo.svg" alt="" class="tool-img undo">
+                </div>
+                <div class="tool">
+                    <img src="icons/redo.svg" alt="" class="tool-img redo">
+                </div>
             </div>
         </div>
-        <input type="file" class="input-tag">
+        <!-- notes dom create -->
+        <canvas class="board">
+        </canvas>
     </div>
-    
-    <!-- canvas -> that will help to draw in browser -->
-    <canvas id="board"></canvas>
-    <script src="tools.js"></script>
+    <script src="./js/utils/common.js"></script>
+    <script src="./js/tool.js"></script>
+    <script src="./js/sticky.js"></script>
+    <script src="./js/image.js"></script>
+    <script src="./js/draw.js"></script>
 </body>
+
 </html>
